@@ -15,9 +15,11 @@ monster_options = {
     "ultra sunshine": "ultra_sunrise.png"
 }
 
+available_drinks = list([drink.capitalize() for drink in monster_options.keys()])
+
 
 class MonsterEnergyRecommendation(BaseModel):
-    drink_name: str = Field(..., description="Recommend a Monster Energy drink from the following list: " + str(list(monster_options.keys())))
+    drink_name: str = Field(..., description="Recommend a Monster Energy drink from the following list: " + str(available_drinks))
     explanation: str = Field(..., description="Explain why this Monster Energy drink should be recommended at this time to the customer.")
 
 

@@ -3,7 +3,7 @@ import os
 import rootpath
 import streamlit as st
 
-from model import recommend_monster, monster_options
+from model import recommend_monster, monster_options, available_drinks
 from modules.weather.api import get_weather
 import requests
 
@@ -23,13 +23,11 @@ st.title("⚡ Monster Energy Oracle")
 st.subheader("Let the sky choose your caffeine.")
 
 # Get list of all possible drinks
-available_drinks = list(monster_options.keys())
 excluded = st.multiselect(
     "❌ Drinks to exclude from your destiny:",
     options=available_drinks,
     help="Don't like a flavor? Remove it from the prophecy."
 )
-
 
 if st.button("Tell me my drink of destiny"):
     city = get_user_location()
